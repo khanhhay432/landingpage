@@ -99,7 +99,6 @@ body {
         width: 64px;
         height: 64px;
     }
-}
 
 /* Thêm breakpoint cho điện thoại nhỏ hơn (ví dụ <=640px) */
 @media (max-width: 640px) {
