@@ -1,0 +1,152 @@
+/* Cập nhật CSS cho phần services:
+   - Thu nhỏ và in đậm tiêu đề (.service-title)
+   - Thêm class mô tả nhỏ (.service-desc) nếu cần
+   - Khi responsive (<=992px) chuyển lưới sang 2 cột và điều chỉnh kích thước chữ/ikon
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+}
+
+/* Container item */
+.service-item {
+    position: relative;
+    list-style: none;
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.5s;
+    padding: 20px; /* thêm padding để khoảng cách chữ/ảnh đẹp hơn */
+}
+
+/* Gradient hover */
+.service-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #FF9966, #FF5E62);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.service-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #FF9966, #FF5E62);
+    filter: blur(20px);
+    z-index: -1;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.service-item:hover::before {
+    opacity: 1;
+}
+
+.service-item:hover::after {
+    opacity: 0.5;
+}
+
+/* Icon */
+.service-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.5s;
+    z-index: 10;
+}
+
+.service-item:hover .service-icon {
+    transform: scale(1.2);
+}
+
+/* Tiêu đề: chỉnh kích thước và in đậm */
+.service-title {
+    margin-top: 15px;
+    font-size: 1rem;      /* mặc định ~16px, thay đổi ở responsive bên dưới */
+    font-weight: 600;     /* 700 = bold */
+    color: #333;
+    z-index: 10;
+    transition: color 0.5s, font-weight 0.2s;
+}
+
+/* Nếu muốn mô tả nhỏ bên dưới tiêu đề, thêm class này trong HTML */
+.service-desc {
+    margin-top: 8px;
+    font-size: 0.875rem; /* nhỏ hơn tiêu đề */
+    font-weight: 400;
+    color: #666;
+    z-index: 10;
+}
+
+/* Hover: đổi màu tiêu đề (giữ font-weight bold) */
+.service-item:hover .service-title {
+    color: #fff;
+    /* nếu muốn tăng độ dày khi hover, bỏ comment dưới */
+    /* font-weight: 800; */
+}
+
+/* --- Responsive: chuyển layout services về 2 cột trên màn nhỏ --- */
+/* Target trực tiếp container trong HTML: #services .grid
+   (dù bạn đang dùng Tailwind, selector này sẽ ghi đè grid-template-columns nếu cần) */
+@media (max-width: 992px) {
+    /* Ép grid trong phần services thành 2 cột trên tablet/phone */
+    #services .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    /* Điều chỉnh chữ và icon cho nhỏ hơn trên màn nhỏ */
+    .service-title {
+        font-size: 0.95rem;
+    }
+    .service-desc {
+        font-size: 0.8rem;
+    }
+    .service-icon {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+/* Thêm breakpoint cho điện thoại nhỏ hơn (ví dụ <=640px) */
+@media (max-width: 640px) {
+    #services .grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* vẫn 2 cột */
+        gap: 0.75rem !important;
+    }
+
+    .service-title {
+        font-size: 0.9rem;
+    }
+    .service-desc {
+        font-size: 0.75rem;
+    }
+    .service-item {
+        padding: 14px;
+    }
+    .service-icon {
+        width: 56px;
+        height: 56px;
+    }
+}
