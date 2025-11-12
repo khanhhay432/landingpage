@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="{{asset('css/style.css')}}"
-
 @extends('layouts.app')
 
 @section('content')
@@ -9,16 +7,13 @@
 </section>
 
 <section id="services" class="py-10 bg-gray-110">
-    <h2 class="text-2xl mb-5 text-center">Dịch vụ nổi bật</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        @foreach($services as $service)
-            <div class="service-item relative flex flex-col items-center justify-center text-center border p-4 rounded shadow overflow-hidden">
-                @if($service->thumbnail)
-                    <img src="{{ asset('storage/'.$service->thumbnail) }}" alt="{{ $service->title }}" class="service-icon">
-                @endif
-                <h3 class="service-title">{{ $service->title }}</h3>
-            </div>
-        @endforeach
+            @foreach($services as $service)
+                    @if($service->thumbnail)
+                        <img src="{{ asset('storage/'.$service->thumbnail) }}" alt="{{ $service->title }}" class="service-icon">
+                    @endif
+                    <h3 class="service-title">{{ $service->title }}</h3>
+                </div>
+            @endforeach
     </div>
 </section>
 
