@@ -1,122 +1,219 @@
+/* ====== RESET ====== */
+html {
+    scroll-behavior: smooth;
+    max-width: inherit;
+}
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: #f5f5f5;
+    color: #333;
+    background: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ====== HERO ====== */
+.hero {
+    background: #e63946;
+    color: #fff;
+    padding: 80px 20px;
+}
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+.hero .btn-call {
+    background: #fff;
+    color: #e63946;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.hero .btn-call:hover {
+    background: #f8d7da;
+}
+
+/* ====== SECTIONS ====== */
+section {
+    padding: 60px 20px;
+}
+section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: #1d3557;
+}
+
+/* ====== GRID ====== */
+.grid-3,
+.grid-4,
+.grid-6 {
+    display: grid;
+    gap: 20px;
+    /*grid-column: 4;*/
+}
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-6 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+.grid .hover {
+    transform: translate(-3px);
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== FEATURES ====== */
+.features span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+    color: #e63946;
+}
+
+/* ====== SERVICES ====== */
+.services {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.services h2 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: #1d3557;
+    margin-bottom: 30px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* luôn 4 cột đều nhau */
+    gap: 24px;
+    max-width: 1200px; /* giới hạn chiều rộng tổng thể */
+    margin: 0 auto;    /* căn giữa toàn bộ grid */
+    justify-items: center; /* căn giữa từng item bên trong grid */
 }
 
 .service-item {
-    background: #fff;
-    cursor: pointer;
-}
-
-/* Gradient hover */
-.service-item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(45deg, #FF9966, #FF5E62);
-    opacity: 0;
-    transition: 0.5s;
-}
-
-.service-item::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px 20px;
+    transition: 0.3s;
     width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: linear-gradient(45deg, #FF9966, #FF5E62);
-    filter: blur(20px);
-    z-index: -1;
-    opacity: 0;
-    transition: 0.5s;
+    max-width: 250px; /* kích thước cố định nhưng linh hoạt hơn */
+    height: 250px;
+    box-sizing: border-box;
+    background: #fff;
 }
 
 .service-item:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.service-item:hover::before {
-    opacity: 1;
-}
-
-.service-item:hover::after {
-    opacity: 0.5;
-}
-
-.service-icon {
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.service-item:hover .service-icon {
-}
-
-/* Tiêu đề: chỉnh kích thước và in đậm */
-.service-title {
-    margin-top: 15px;
-    font-size: 1rem;      /* mặc định ~16px, thay đổi ở responsive bên dưới */
-    font-weight: 600;     /* 700 = bold */
-    color: #333;
-    z-index: 10;
-    transition: color 0.5s, font-weight 0.2s;
-}
-
-/* Nếu muốn mô tả nhỏ bên dưới tiêu đề, thêm class này trong HTML */
-.service-desc {
-    margin-top: 8px;
-    font-size: 0.875rem; /* nhỏ hơn tiêu đề */
-    font-weight: 400;
-    color: #666;
-    z-index: 10;
-}
-
-/* Hover: đổi màu tiêu đề (giữ font-weight bold) */
-.service-item:hover .service-title {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: linear-gradient(#ecbf77, #fd853a);
     color: #fff;
-    /* nếu muốn tăng độ dày khi hover, bỏ comment dưới */
-    /* font-weight: 800; */
 }
 
-    #services .grid {
-        gap: 1rem !important;
-    }
+.services img {
+    margin: 0 auto 10px;
+    width: 60px;
+    height: 60px;
+}
 
-    /* Điều chỉnh chữ và icon cho nhỏ hơn trên màn nhỏ */
-    .service-title {
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
     }
-    .service-desc {
-    }
-    .service-icon {
-        width: 64px;
-        height: 64px;
-    }
+}
 
-/* Thêm breakpoint cho điện thoại nhỏ hơn (ví dụ <=640px) */
-@media (max-width: 640px) {
-    #services .grid {
-        gap: 0.75rem !important;
+@media (max-width: 768px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .service-title {
-        font-size: 0.9rem;
+@media (max-width: 480px) {
+    .grid-4 {
+        grid-template-columns: 1fr;
     }
-    .service-desc {
-        font-size: 0.75rem;
-    }
-    .service-item {
-        padding: 14px;
-    }
-    .service-icon {
-        width: 56px;
-        height: 56px;
-    }
+}
+
+/* ====== PROCESS ====== */
+.process div {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.process span {
+    font-size: 1.8rem;
+    color: #e63946;
+}
+
+/*!* ====== TESTIMONIALS ====== *!*/
+/*.testimonials .card {*/
+/*    background: #fff;*/
+/*    border-radius: 10px;*/
+/*    padding: 20px;*/
+/*    box-shadow: 0 3px 6px rgba(0,0,0,0.1);*/
+/*}*/
+/*.testimonials img {*/
+/*    width: 100%;*/
+/*    border-radius: 8px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+/*.testimonials p {*/
+/*    font-style: italic;*/
+/*}*/
+
+/* ====== CONTACT ====== */
+.contact-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+}
+.btn-submit {
+    background: #e63946;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-submit:hover {
+    background: #c5303d;
+}
+.contact-map iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
 }

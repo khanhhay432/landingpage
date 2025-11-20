@@ -11,6 +11,7 @@ class LandingController extends Controller
 {
     public function index()
     {
+        $services = Service::where('status', 'active')->latest()->get();
         $posts = Post::where('status', 'published')->latest()->take(3)->get();
         $settings = SiteSetting::where('setting_key', 'site_name')->value('setting_value');
 
